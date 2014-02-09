@@ -1,0 +1,7 @@
+//embertrail top level
+
+module Embertrail_top(
+input wire [31:0] 
+  PC,
+  IR,
+);

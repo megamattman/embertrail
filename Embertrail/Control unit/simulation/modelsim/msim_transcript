@@ -1,0 +1,168 @@
+# Reading C:/altera/13.1/modelsim_ase/tcl/vsim/pref.tcl 
+# do Embertrail_ctrl_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\altera\13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\altera\13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/Matt/Desktop/Embertrail/Control\ unit {C:/Users/Matt/Desktop/Embertrail/Control unit/Embertrail_ctrl.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Embertrail_ctrl
+# ** Warning: C:/Users/Matt/Desktop/Embertrail/Control unit/Embertrail_ctrl.v(263): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# 
+# 
+# Top level modules:
+# 	Embertrail_ctrl
+# vlog -vlog01compat -work work +incdir+C:/Users/Matt/Desktop/Embertrail/RegisterFile {C:/Users/Matt/Desktop/Embertrail/RegisterFile/registerFile.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module register_file
+# 
+# Top level modules:
+# 	register_file
+# vlog -vlog01compat -work work +incdir+C:/Users/Matt/Desktop/Embertrail/ALU {C:/Users/Matt/Desktop/Embertrail/ALU/alu.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	alu
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/Matt/Desktop/Embertrail/Control\ unit/simulation/modelsim {C:/Users/Matt/Desktop/Embertrail/Control unit/simulation/modelsim/Embertrail_ctrl.vt}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Embertrail_ctrl_vlg_tst
+# 
+# Top level modules:
+# 	Embertrail_ctrl_vlg_tst
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs="+acc"  ctrl_test
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps ctrl_test 
+# ** Error: (vsim-3170) Could not find 'C:/Users/Matt/Desktop/Embertrail/Control unit/simulation/modelsim/rtl_work.ctrl_test'.
+# 
+# Error loading design
+# Error: Error loading design 
+#        Pausing macro execution 
+# MACRO ./Embertrail_ctrl_run_msim_rtl_verilog.do PAUSED at line 14
+vlog -vlog01compat -work work +incdir+C:/Users/Matt/Desktop/Embertrail/ALU -O0 C:/Users/Matt/Desktop/Embertrail/ALU/alu.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	alu
+vlog -vlog01compat -work work {+incdir+C:/Users/Matt/Desktop/Embertrail/Control unit} -O0 {C:/Users/Matt/Desktop/Embertrail/Control unit/Embertrail_ctrl.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Embertrail_ctrl
+# ** Warning: C:/Users/Matt/Desktop/Embertrail/Control unit/Embertrail_ctrl.v(263): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# 
+# 
+# Top level modules:
+# 	Embertrail_ctrl
+vlog -vlog01compat -work work {+incdir+C:/Users/Matt/Desktop/Embertrail/Control unit/simulation/modelsim} -O0 {C:/Users/Matt/Desktop/Embertrail/Control unit/simulation/modelsim/Embertrail_ctrl.vt}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Embertrail_ctrl_vlg_tst
+# 
+# Top level modules:
+# 	Embertrail_ctrl_vlg_tst
+vlog -vlog01compat -work work +incdir+C:/Users/Matt/Desktop/Embertrail/RegisterFile -O0 C:/Users/Matt/Desktop/Embertrail/RegisterFile/registerFile.v
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module register_file
+# 
+# Top level modules:
+# 	register_file
+vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps work.Embertrail_ctrl_vlg_tst
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps work.Embertrail_ctrl_vlg_tst 
+# Loading work.Embertrail_ctrl_vlg_tst
+# Loading work.Embertrail_ctrl
+# Loading work.register_file
+# Loading work.alu
+add wave -position insertpoint  \
+sim:/Embertrail_ctrl_vlg_tst/IR
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+# 
+#           File in use by: Matt  Hostname: MATTS-PC  ProcessID: 816
+# 
+#           Attempting to use alternate WLF file "./wlfthmya3q".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+# 
+#           Using alternate file: ./wlfthmya3q
+# 
+add wave -position insertpoint  \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst1BImm \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst2BImm \
+sim:/Embertrail_ctrl_vlg_tst/i1/dualInst \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst1Op \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst2Op \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst1ARegReadSel \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst1BRegReadSel \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst2ARegReadSel \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst2BRegReadSel \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst1Imm \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst2Imm \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst1AReadData \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst1BReadData \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst2AReadData \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst2BReadData \
+sim:/Embertrail_ctrl_vlg_tst/i1/alu1Result \
+sim:/Embertrail_ctrl_vlg_tst/i1/alu2Result \
+sim:/Embertrail_ctrl_vlg_tst/i1/instExAddr \
+sim:/Embertrail_ctrl_vlg_tst/i1/dumbWire \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst1RegWB \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst2RegWB \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst1Addr \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst1Ld \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst2Ld \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst1ImmInst \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst2ImmInst \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst1Branch \
+sim:/Embertrail_ctrl_vlg_tst/i1/extendedInst \
+sim:/Embertrail_ctrl_vlg_tst/i1/rfReadPort1A \
+sim:/Embertrail_ctrl_vlg_tst/i1/rfReadPort1B \
+sim:/Embertrail_ctrl_vlg_tst/i1/rfReadPort2A \
+sim:/Embertrail_ctrl_vlg_tst/i1/rfReadPort2B \
+sim:/Embertrail_ctrl_vlg_tst/i1/rfWritePort1 \
+sim:/Embertrail_ctrl_vlg_tst/i1/rfWritePort2 \
+sim:/Embertrail_ctrl_vlg_tst/i1/alu1Op \
+sim:/Embertrail_ctrl_vlg_tst/i1/alu2Op \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst1RegWriteSel \
+sim:/Embertrail_ctrl_vlg_tst/i1/inst2RegWriteSel \
+sim:/Embertrail_ctrl_vlg_tst/i1/alu1OpA \
+sim:/Embertrail_ctrl_vlg_tst/i1/alu1OpB \
+sim:/Embertrail_ctrl_vlg_tst/i1/alu2OpA \
+sim:/Embertrail_ctrl_vlg_tst/i1/alu2OpB \
+sim:/Embertrail_ctrl_vlg_tst/i1/alu1Output \
+sim:/Embertrail_ctrl_vlg_tst/i1/alu2Output \
+sim:/Embertrail_ctrl_vlg_tst/i1/rfWriteData1 \
+sim:/Embertrail_ctrl_vlg_tst/i1/rfWriteData2
+add wave -position insertpoint  \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/iClock \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/iReadPort1A \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/iReadPort1B \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/iReadPort2A \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/iReadPort2B \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/iWritePort1 \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/iWritePort2 \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/iRegReadSel1A \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/iRegReadSel1B \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/iRegReadSel2A \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/iRegReadSel2B \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/oRead1AData \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/oRead1BData \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/oRead2AData \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/oRead2BData \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/iRegWrite1 \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/iRegWrite2 \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/r_q \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/r_d \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/readData1A_o \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/readData1B_o \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/readData2A_o \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/readData2B_o \
+sim:/Embertrail_ctrl_vlg_tst/i1/RF/i
+run
+run
+run
+run
+# Running testbench

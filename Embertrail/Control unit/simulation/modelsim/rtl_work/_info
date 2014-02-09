@@ -1,0 +1,87 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\Matt\Desktop\Embertrail\Control unit\simulation\modelsim
+valu
+Ifi>P0RUDJB>3P@;^6H4=c3
+VjU2mY;HXbBGdJEBe_BZ6O3
+Z1 dC:\Users\Matt\Desktop\Embertrail\Control unit\simulation\modelsim
+w1391424826
+8C:/Users/Matt/Desktop/Embertrail/ALU/alu.v
+FC:/Users/Matt/Desktop/Embertrail/ALU/alu.v
+L0 10
+Z2 OV;L;10.1d;51
+r1
+31
+Z3 o-vlog01compat -work work -O0
+!i10b 1
+!s100 Pe5Pff0`JzY?zz;RFJ40h1
+!s85 0
+!s108 1391445322.666000
+!s107 C:/Users/Matt/Desktop/Embertrail/ALU/alu.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Matt/Desktop/Embertrail/ALU|-O0|C:/Users/Matt/Desktop/Embertrail/ALU/alu.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+C:/Users/Matt/Desktop/Embertrail/ALU -O0
+vEmbertrail_ctrl
+I]fk[h0[4<i^3@d81m?9;c2
+VTX89UV:FSe;m=H8nXbCNM0
+R1
+w1391445097
+8C:/Users/Matt/Desktop/Embertrail/Control unit/Embertrail_ctrl.v
+FC:/Users/Matt/Desktop/Embertrail/Control unit/Embertrail_ctrl.v
+L0 23
+R2
+r1
+31
+R3
+n@embertrail_ctrl
+!i10b 1
+!s100 DWO90=@zJe>NnC;5f^=_T3
+!s85 0
+!s108 1391445322.810000
+!s107 C:/Users/Matt/Desktop/Embertrail/Control unit/Embertrail_ctrl.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Matt/Desktop/Embertrail/Control unit|-O0|C:/Users/Matt/Desktop/Embertrail/Control unit/Embertrail_ctrl.v|
+!s101 -O0
+!s92 -vlog01compat -work work {+incdir+C:/Users/Matt/Desktop/Embertrail/Control unit} -O0
+vEmbertrail_ctrl_vlg_tst
+IHcRlEln2O0WQiXKDLohSo1
+V4TV2ncFQNPFg@laGA44Q]0
+R1
+w1391445303
+8C:/Users/Matt/Desktop/Embertrail/Control unit/simulation/modelsim/Embertrail_ctrl.vt
+FC:/Users/Matt/Desktop/Embertrail/Control unit/simulation/modelsim/Embertrail_ctrl.vt
+L0 37
+R2
+r1
+31
+R3
+n@embertrail_ctrl_vlg_tst
+!i10b 1
+!s100 ITcCjzKOG?]n?66R>CVPV3
+!s85 0
+!s108 1391445322.973000
+!s107 C:/Users/Matt/Desktop/Embertrail/Control unit/simulation/modelsim/Embertrail_ctrl.vt|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Matt/Desktop/Embertrail/Control unit/simulation/modelsim|-O0|C:/Users/Matt/Desktop/Embertrail/Control unit/simulation/modelsim/Embertrail_ctrl.vt|
+!s101 -O0
+!s92 -vlog01compat -work work {+incdir+C:/Users/Matt/Desktop/Embertrail/Control unit/simulation/modelsim} -O0
+vregister_file
+!i10b 1
+!s100 aCB@=iUDbH7XEOa5i<zej3
+I;aaZ>E8N:zdg=f[C4M2C93
+VlB?b;d4=[J1G3O7o`a`i:0
+R1
+w1391443772
+8C:/Users/Matt/Desktop/Embertrail/RegisterFile/registerFile.v
+FC:/Users/Matt/Desktop/Embertrail/RegisterFile/registerFile.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1391445323.120000
+!s107 C:/Users/Matt/Desktop/Embertrail/RegisterFile/registerFile.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Matt/Desktop/Embertrail/RegisterFile|-O0|C:/Users/Matt/Desktop/Embertrail/RegisterFile/registerFile.v|
+!s101 -O0
+R3
+!s92 -vlog01compat -work work +incdir+C:/Users/Matt/Desktop/Embertrail/RegisterFile -O0
