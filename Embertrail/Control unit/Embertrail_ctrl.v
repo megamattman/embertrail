@@ -16,22 +16,36 @@
 `define JMP  	4'b1110
 `define BEQ  	4'b1111
 
-`timescale 1ps/1ps
+`timescale 1ns/1ns
 
 `default_nettype none
 
 module Embertrail_ctrl (
 
 input wire iClock,
+input wire iReset,
 
 input wire [31:0] iIR,
-input wire [15:0] iPC
+input wire [15:0] iPC,
 
-/*output wire [4:0]oInst1AReg,
-output wire [4:0]oInst1BReg,
-output wire [4:0]oInst2AReg,
-output wire [4:0]oInst2BReg
-	*/
+input wire [15:0]iMemoryReadData1,
+input wire [15:0]iMemoryReadData2,
+
+output wire [15:0]oMemoryWriteData1,
+output wire [15:0]oMemoryWriteData2,
+output wire [15:0]oMemoryWriteAddress1,
+output wire [15:0]oMemoryWriteAddress2,
+
+input wire [31:0] iDataDataBus,
+
+output wire [31:0] oDataAddrBus,
+output wire [15:0] oInstAddrBus,
+
+output wire oDataMem1RW,
+output wire oDataMem2RW,
+output wire oData1BusEn,
+output wire oData2BusEn
+
 );
 	 
 //wire definitions
@@ -79,7 +93,8 @@ output wire [4:0]oInst2BReg
     rfReadPort2A =0,
     rfReadPort2B =0,  
     rfWritePort1 =0,
-    rfWritePort2 =0;
+    rfWritePort2 =0,
+	 branchTaken  =0;
   
   reg [4:0]
     alu1Op = 0,
@@ -94,6 +109,9 @@ output wire [4:0]oInst2BReg
     alu2OpB = 0,
 	 alu1Output = 0,
 	 alu2Output = 0,
+	 branchOpA =0,
+	 branchOpB =0,
+	 NPCOut = 0,
     NPC = 0;	 
    
 	 
@@ -119,11 +137,16 @@ output wire [4:0]oInst2BReg
   //extend instruction operand
   assign instExAddr		=iIR[31:16];
   
+//PC output
+  //assign oNPC = NPCOut ;
+
+  
   ///{
 register_file RF (
 
 //control
   .iClock (iClock),
+  .iReset(iReset),
   
   .iReadPort1A(rfReadPort1A),
   .iReadPort1B(rfReadPort1B),
@@ -154,6 +177,7 @@ register_file RF (
 alu A1 (
 //control
 	.iClock (iClock),
+	.iReset(iReset),
 	.iOperation(alu1Op),
 //operands
   .iOperandA(alu1OpA),
@@ -165,6 +189,7 @@ alu A1 (
 alu A2 (
 //control
 	.iClock (iClock),
+	.iReset(iReset),
 	.iOperation(alu2Op),
 //operands
   .iOperandA(alu2OpA),
@@ -186,10 +211,12 @@ begin : instDecode_l
   rfWriteData1 = 0;
   alu1Op = 5'b00000;
   inst1RegWriteSel = 0;
+  branchTaken = 0;
+  branchOpA = 0;
+  branchOpB = 0;
 //rf control
   rfReadPort1A = 0;
-  rfReadPort1B = 0;
- 
+  rfReadPort1B = 0; 
   rfWritePort1 = 0;
  
   //end of initialisation
@@ -266,77 +293,109 @@ begin : instDecode_l
 	 `JMP:
 	   begin
 		alu1Op = 5'b00000;
+		branchTaken = 1;  //to keep things simple jmp is treated like a branch that is always taken
 	   end
 	 `BEQ:
 	   begin
-		  alu1Op = 5'b00000;
+		  alu1Op = 5'b00001;
 	     extendedInst = 1'b1;
 		  inst1Branch = 1'b1;
+		  rfReadPort1A = 1;		
+		  rfReadPort1B = 1;		
 	   end
 	default: //nops
 		begin
 		dumbWire =1'b1;
 		end
 		//}
-endcase //end of case opCode1
+  endcase //end of case opCode1
 
 
-//
 //access memory with the PC??
 //Determine A operand to send to ALU
   if (inst1Branch) begin
-    alu1OpA = NPC;
- end
-  else begin   
-    rfReadPort1A = 1;
+    alu1OpA = NPC;	 
+  end
+  else begin  
+	 rfReadPort1A = 1;
     alu1OpA = inst1AReadData;
   end
 	
 //Determine B operand to send to ALU
 //if (!opCode1 && (NOP || LDR || STR))  //if instruciton uses ALU
 //begin
-	if (inst1ImmInst) begin 
-	  alu1OpB = inst1Imm;
-	end
-	else if (inst1BImm)	begin	 
-	  alu1OpB = {11'b0, inst1BRegReadSel};		//use the reg sel value as small imm	  
-	end
-	else if (inst1Branch) begin  //if branch use the memory offset in the top isntruciton word
-	  alu1OpB = instExAddr;	  
-	end	
-	else begin
-	 rfReadPort1B = 1;					//set read signal when required
-	 alu1OpB = inst1BReadData;
-	end
-//end
-
+  if (inst1ImmInst) begin 
+    alu1OpB = inst1Imm;
+  end
+  else if (inst1BImm)	begin	 
+    alu1OpB = {11'b0, inst1BRegReadSel};		//use the reg sel value as small imm	  
+  end
+  else if (inst1Branch) begin  //if branch use the memory offset in the top isntruciton word
+    alu1OpB = instExAddr;	
+  end	
+  else begin
+   rfReadPort1B = 1;					//set read signal when required
+   alu1OpB = inst1BReadData;
+  end
+  
+  if (inst1Branch) begin  //if branch determine comparison opoerands
+    branchOpA =inst1AReadData;
+    if (inst1BImm) begin
+      branchOpB = {11'b0,inst1BRegReadSel};
+    end
+    else begin
+      branchOpB = inst1BReadData;
+    end
+	 
+	 if (branchOpA === branchOpB) begin // do the comparison
+	   branchTaken =1;
+	 end
+	 else begin
+	   branchTaken =0;
+    end
+  end 	 	 
 //determine which alu to use
-	if (inst1Addr) begin			
-		alu1Output = ({11'b0, inst1BRegReadSel} + instExAddr);
-	end
-	else begin
+  if (inst1Addr) begin			
+    alu1Output = ({11'b0, inst1BRegReadSel} + instExAddr); //only supports positive offsets? Leave to programmer to deal with that
+  end
+  else begin
 		alu1Output = alu1Result;
-   end
-	
+  end
+  
 	//write new PC
 	//branch true or incremented PC
 	
 	//Write back to registers, using memory data or aluOutput
-	if (inst1RegWB) begin	  
-	  if (inst1Ld) begin
+  if (inst1RegWB) begin	  
+    if (inst1Ld) begin
 	    dumbWire = 1'b1;
-	  end
-	  else 
-	     rfWritePort1 = 1;
-		  inst1RegWriteSel = inst1ARegReadSel;
-		  rfWriteData1 = {inst1RegWriteSel,alu1Output};
-	  end	
-
-
-  //{isntruciton switch statment
-
+	 end
+	 else begin
+	   rfWritePort1 = 1;
+	   inst1RegWriteSel = inst1ARegReadSel;
+	   rfWriteData1 = {inst1RegWriteSel,alu1Output};
+    end
+  end
+  
+  if (branchTaken) begin
+    NPCOut = alu1Output;
+  end
+  else begin
+    NPCOut = NPC;
+  end
 end	
  
+always @(posedge iClock)
+begin
+  if (dualInst) begin
+      NPC = iPC + 6'd32; //increment by 32 bits
+  end
+  else begin
+      NPC = iPC + 5'd16; //increment by 2 bits	
+  end
+	
+end
+
 //decodes and sets signal for instruction 2
 //--decode instruction only if valid
 //--check if extedned instruction
@@ -356,7 +415,7 @@ always@* begin
   inst2RegWriteSel = 0;
  
 //end initilisation
-  if (dualInst) begin
+  if (dualInst & ~extendedInst) begin
     case (inst2Op)	
   	   `ADDR:
 	     begin	
@@ -464,22 +523,8 @@ always@* begin
  end // if dualInst 
 
 endmodule
-/*
-always (@posedge)
-begin
-  if (dualInst)
-    begin
-      NPC = PC + 6'd32; //increment by 32 bits
-	end
-  else
-    begin
-      NPC = PC + 5'd16 //increment by 2 bits	
-	end
-	
-end
 
-endmodule
-*/
+
 //{Register File instantiation
 
 //}

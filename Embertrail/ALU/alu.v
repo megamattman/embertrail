@@ -9,7 +9,8 @@
 
 module alu (
   input wire iClock,
-
+  input wire iReset,
+  
   input wire [15:0] iOperandA,
   input wire [15:0] iOperandB,
   
@@ -57,7 +58,12 @@ module alu (
   
   end
     always@(posedge iClock) begin
-	   aluOutput_q <= aluOutput_d;
+	   if (iReset) begin
+		  aluOutput_q <= 0;
+		end
+		else begin		  
+	     aluOutput_q <= aluOutput_d;
+		end
 	 end
   
 endmodule

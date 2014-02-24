@@ -1,5 +1,5 @@
 Flow report for Embertrail_ctrl
-Sun Feb 09 15:48:04 2014
+Mon Feb 24 17:56:36 2014
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -40,10 +40,10 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Sun Feb 09 15:48:04 2014      ;
+; Flow Status                        ; Successful - Mon Feb 24 17:56:36 2014      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; Embertrail_ctrl                            ;
-; Top-level Entity Name              ; Embertrail_ctrl                            ;
+; Top-level Entity Name              ; Embertrail_top                             ;
 ; Family                             ; Cyclone III                                ;
 ; Device                             ; EP3C16F484C6                               ;
 ; Timing Models                      ; Final                                      ;
@@ -51,7 +51,7 @@ applicable agreement for further details.
 ;     Total combinational functions  ; 0                                          ;
 ;     Dedicated logic registers      ; 0                                          ;
 ; Total registers                    ; 0                                          ;
-; Total pins                         ; 49                                         ;
+; Total pins                         ; 150                                        ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
@@ -64,36 +64,37 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/09/2014 15:48:01 ;
+; Start date & time ; 02/24/2014 17:56:35 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Embertrail_ctrl     ;
 +-------------------+---------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                             ;
-+--------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; Assignment Name                      ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
-+--------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                ; 207458815608901.139196088102228        ; --            ; --          ; --             ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; ctrl_test      ;
-; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; ctrl_test                              ; --            ; --          ; eda_simulation ;
-; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                            ; --            ; --          ; eda_simulation ;
-; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (Verilog)              ; <None>        ; --          ; --             ;
-; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                        ; --            ; --          ; eda_simulation ;
-; EDA_TEST_BENCH_FILE                  ; simulation/modelsim/Embertrail_ctrl.vt ; --            ; --          ; ctrl_test      ;
-; EDA_TEST_BENCH_MODULE_NAME           ; ctrl_test                              ; --            ; --          ; ctrl_test      ;
-; EDA_TEST_BENCH_NAME                  ; ctrl_test                              ; --            ; --          ; eda_simulation ;
-; EDA_TIME_SCALE                       ; 1 ps                                   ; --            ; --          ; eda_simulation ;
-; MAX_CORE_JUNCTION_TEMP               ; 85                                     ; --            ; --          ; --             ;
-; MIN_CORE_JUNCTION_TEMP               ; 0                                      ; --            ; --          ; --             ;
-; PARTITION_COLOR                      ; 16764057                               ; --            ; --          ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL  ; PLACEMENT_AND_ROUTING                  ; --            ; --          ; Top            ;
-; PARTITION_NETLIST_TYPE               ; SOURCE                                 ; --            ; --          ; Top            ;
-; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                    ; --            ; --          ; --             ;
-; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --             ;
-; PROJECT_OUTPUT_DIRECTORY             ; output_files                           ; --            ; --          ; --             ;
-+--------------------------------------+----------------------------------------+---------------+-------------+----------------+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                  ;
++--------------------------------------+----------------------------------------+-----------------+----------------+----------------+
+; Assignment Name                      ; Value                                  ; Default Value   ; Entity Name    ; Section Id     ;
++--------------------------------------+----------------------------------------+-----------------+----------------+----------------+
+; COMPILER_SIGNATURE_ID                ; 207458815608901.139326459502336        ; --              ; --             ; --             ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --              ; --             ; ctrl_test      ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; ctrl_test                              ; --              ; --             ; eda_simulation ;
+; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                            ; --              ; --             ; eda_simulation ;
+; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (Verilog)              ; <None>          ; --             ; --             ;
+; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                        ; --              ; --             ; eda_simulation ;
+; EDA_TEST_BENCH_FILE                  ; simulation/modelsim/Embertrail_ctrl.vt ; --              ; --             ; ctrl_test      ;
+; EDA_TEST_BENCH_MODULE_NAME           ; ctrl_test                              ; --              ; --             ; ctrl_test      ;
+; EDA_TEST_BENCH_NAME                  ; ctrl_test                              ; --              ; --             ; eda_simulation ;
+; EDA_TIME_SCALE                       ; 1 ns                                   ; --              ; --             ; eda_simulation ;
+; MAX_CORE_JUNCTION_TEMP               ; 85                                     ; --              ; --             ; --             ;
+; MIN_CORE_JUNCTION_TEMP               ; 0                                      ; --              ; --             ; --             ;
+; PARTITION_COLOR                      ; 16764057                               ; --              ; Embertrail_top ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL  ; PLACEMENT_AND_ROUTING                  ; --              ; Embertrail_top ; Top            ;
+; PARTITION_NETLIST_TYPE               ; SOURCE                                 ; --              ; Embertrail_top ; Top            ;
+; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                    ; --              ; --             ; --             ;
+; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --              ; --             ; --             ;
+; PROJECT_OUTPUT_DIRECTORY             ; output_files                           ; --              ; --             ; --             ;
+; TOP_LEVEL_ENTITY                     ; Embertrail_top                         ; Embertrail_ctrl ; --             ; --             ;
++--------------------------------------+----------------------------------------+-----------------+----------------+----------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -101,8 +102,8 @@ applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:03     ; 1.0                     ; 460 MB              ; 00:00:01                           ;
-; Total                ; 00:00:03     ; --                      ; --                  ; 00:00:01                           ;
+; Analysis & Synthesis ; 00:00:01     ; 1.0                     ; 456 MB              ; 00:00:01                           ;
+; Total                ; 00:00:01     ; --                      ; --                  ; 00:00:01                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
